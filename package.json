@@ -1,0 +1,63 @@
+{
+  "name": "ai-utils",
+  "version": "0.0.1",
+  "description": "Paul's AI utils",
+  "keywords": [
+    "strapi",
+    "plugin",
+    "audio",
+    "transcript",
+    "ai",
+    "utils"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PaulBratslavsky/strapi-plugin-audio-transcript"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Paul",
+    "email": "codingafterthirty@gmail.com",
+    "url": "https://codingafterthirty.com"
+  },
+  "maintainers": [
+    {
+      "name": "Paul",
+      "email": "codingafterthirty@gmail.com",
+      "url": "https://codingafterthirty.com"
+    }
+  ],
+  "dependencies": {
+    "@strapi/design-system": "^1.6.3",
+    "@strapi/helper-plugin": "^4.6.0",
+    "@strapi/icons": "^1.6.3",
+    "@yohancolla/ytdl": "^1.2.0",
+    "ffmpeg-static": "^5.2.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "openai": "^4.33.0",
+    "prop-types": "^15.7.2",
+    "ytdl-core": "^4.11.5"
+  },
+  "devDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^5.3.4",
+    "styled-components": "^5.3.6"
+  },
+  "peerDependencies": {
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0",
+    "react-router-dom": "^5.2.0",
+    "styled-components": "^5.2.1"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=20.x.x",
+    "npm": ">=6.0.0"
+  },
+  "strapi": {
+    "name": "ai-utils",
+    "description": "Ai Utils For Various Tasks",
+    "kind": "plugin",
+    "displayName": "Ai Utils"
+  }
+}
