@@ -1,6 +1,7 @@
 "use strict";
 const path = require("path");
 const fs = require("fs");
+const fsPromise = require("fs").promises;
 const os = require("os");
 
 module.exports = ({ strapi }) => ({
@@ -34,18 +35,29 @@ module.exports = ({ strapi }) => ({
         .whisper(audioFilePath);
 
       if (transcription) {
-        const payload = { videoId: videoId, transcript: transcription.text };
 
-        await strapi
+        console.log("Transcription:", transcription.segments)
+        const payload = { 
+          videoId: videoId, 
+          transcript: transcription.text, 
+          language: transcription.language,
+          duration: transcription.duration,
+          json: JSON.stringify(transcription.segments),
+        };
+
+        const transcript = await strapi
           .plugin("ai-utils")
           .service("transcript")
           .saveTranscript(payload);
+
+        if (transcript.id) {
+          fsPromise.rm(newTempDirPath, { recursive: true }).catch(() => {
+            console.log("failed to delete.");
+          });
+        }
       }
 
-      // TODO: figure this out later - how to delete the temp directory
-      // if (transcription) fs.rmdirSync(newTempDirPath, { recursive: true });
-
-      return { data: transcription };
+      return ctx.send({ data: transcription.text });
     } catch (error) {
       ctx.throw(500, error);
     }

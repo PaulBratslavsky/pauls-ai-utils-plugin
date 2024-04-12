@@ -11,6 +11,8 @@ module.exports = ({ strapi }) => ({
       const response = await openai.audio.transcriptions.create({
         file: fs.createReadStream(audioFilePath),
         model: "whisper-1",
+        response_format: "verbose_json",
+        timestamp_granularities: ["segment"],
       });
       return response; 
     } catch (error) {

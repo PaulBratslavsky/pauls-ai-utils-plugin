@@ -29,5 +29,14 @@ module.exports = {
     transcript: {
       type: "richtext",
     },
+    json: {
+      type: "json"
+    },
+    duration: {
+      type: "float"
+    },
+    language: {
+      type: "string"
+    }
   },
 };
